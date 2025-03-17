@@ -24,7 +24,7 @@ const axios = require("axios");
 // app.use(cors());
 app.use(
   cors({
-    origin: ["http://localhost:5001"], // Allow frontend port
+    origin: ["https://ccfrontend.onrender.com"], // Allow frontend port
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   })
 );
@@ -38,34 +38,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoutes);
 
-// --------------------Deployment----------
 
-// const __dirname1 = path.resolve();
-
-// if (process.env.NODE_ENV === 'production') {
-//     console.log(" Entered production mode");
-//     console.log("Serving frontend from:", path.join(__dirname1, "forntend", "dist"));
-
-//     app.use(express.static(path.join(__dirname1, "forntend", "dist")));
-
-//     // Ensure `/` serves `index.html`
-//     app.get('/', (req, res) => {
-//         res.sendFile(path.resolve(__dirname1, "forntend", "dist", "index.html"));
-//     });
-
-//     app.get('*', (req, res) => {
-//         console.log("Serving index.html from:", path.resolve(__dirname1, "forntend", "dist", "index.html"));;
-//         res.sendFile(path.resolve(__dirname1, "forntend", "dist", "index.html"));
-//     });
-
-// } else {
-//     console.log("Entered development mode");
-//     app.get("/", (req, res) => {
-//         res.send("API is running successfully");
-//     });
-// }
-
-// --------------------Deployment----------
 
 app.use(notFound);
 app.use(errorHandler);
@@ -77,7 +50,7 @@ const server = app.listen(PORT, () =>
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:5001", // Fix CORS issue
+    origin: "https://ccfrontend.onrender.com", // Fix CORS issue
     methods: ["GET", "POST"],
   },
 });
