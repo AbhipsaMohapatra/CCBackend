@@ -15,16 +15,7 @@ const connectDB = require("./config/db");
 const PORT = process.env.PORT || 5000;
 const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
-//Added to react
-const path = require("path");
-const __dirname1 = path.resolve();
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname1, "/frontend/dist")));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname1, "frontend", "dist", "index.html"));
-  });
-}
 
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 connectDB();
